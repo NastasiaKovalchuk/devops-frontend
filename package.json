@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -16,6 +19,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^10.10.0",
     "typescript": "~5.7.2",
     "vite": "^6.3.1"
   }

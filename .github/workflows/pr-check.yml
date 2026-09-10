@@ -31,3 +31,9 @@ jobs:
 
       - name: Установка зависимостей
         run: npm ci
+
+      - name: Линтинг
+        run: npm run lint
+
+      - name: Запуск тестов
+        run: npm run test
