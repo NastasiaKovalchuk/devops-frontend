@@ -31,7 +31,7 @@ jobs:
           IMAGE_SHA: ${{ vars.DOCKERHUB_USER }}/frontend:sha-${{ github.sha }}
           IMAGE_LATEST: ${{ vars.DOCKERHUB_USER }}/frontend:latest
         run: |
-          docker buildx build --pull --platform linux/amd64 -t $IMAGE_SHA -t $IMAGE_LATEST --push .
+          docker buildx build --no-cache --pull --platform linux/amd64 -t $IMAGE_SHA -t $IMAGE_LATEST --push .
           echo "image_sha=$IMAGE_SHA" >> $GITHUB_OUTPUT
 
 
