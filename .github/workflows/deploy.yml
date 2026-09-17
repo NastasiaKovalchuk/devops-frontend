@@ -31,7 +31,7 @@ jobs:
           IMAGE_SHA: ${{ vars.DOCKERHUB_USER }}/frontend:sha-${{ github.sha }}
           IMAGE_LATEST: ${{ vars.DOCKERHUB_USER }}/frontend:latest
         run: |
-          docker buildx build --platform linux/amd64 -t $IMAGE_SHA -t $IMAGE_LATEST --push .
+          docker buildx build --pull --platform linux/amd64 -t $IMAGE_SHA -t $IMAGE_LATEST --push .
           echo "image_sha=$IMAGE_SHA" >> $GITHUB_OUTPUT
 
 
@@ -53,7 +53,7 @@ jobs:
             # Берём имя образа из output предыдущего job'а — не дублируем
             sed -i "s|DOCKER_IMAGE=.*|DOCKER_IMAGE=${{ needs.build.outputs.image_sha }}|" .env
             docker compose pull frontend
-            # Перезапускаем только backend, не трогая frontend и db
+            # Перезапускаем только frontend , не трогая backend и db
             docker compose up -d --no-deps frontend
 
   notify:
