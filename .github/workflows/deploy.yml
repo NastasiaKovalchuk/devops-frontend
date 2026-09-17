@@ -51,7 +51,7 @@ jobs:
             cd dev-less
 
             # Берём имя образа из output предыдущего job'а — не дублируем
-            sed -i "s|DOCKER_IMAGE=.*|DOCKER_IMAGE=${{ needs.build.outputs.image_sha }}|" .env
+            sed -i "s|DOCKER_FRONT_IMAGE=.*|DOCKER_FRONT_IMAGE=${{ needs.build.outputs.image_sha }}|" .env
             docker compose pull frontend
             # Перезапускаем только frontend , не трогая backend и db
             docker compose up -d --no-deps frontend
